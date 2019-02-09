@@ -6,7 +6,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const resolve = dir => path.join(__dirname, '..', dir)
 
 module.exports = (env, argv) => ({
-	entry: resolve('src/main.js'),
+	// entry: resolve('src/main.js'),
+	entry:path.resolve('src/main.js'),
 	output: {
 		filename: '[name].[hash:5].js',
 		path: resolve('dist')
@@ -63,7 +64,8 @@ module.exports = (env, argv) => ({
 	plugins: [
 		new VueLoaderPlugin(),
 		new HtmlWebpackPlugin({
-			template: resolve('index.html')
+			// template: resolve('index.html')
+			template:'index.html'
 		}),
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
