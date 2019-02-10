@@ -8,7 +8,7 @@
 	export default {
 		data() {
 			return {
-				msg: 'niconiconi!'
+				msg: process.env.NODE_ENV 
 			}
 		}
 	}
