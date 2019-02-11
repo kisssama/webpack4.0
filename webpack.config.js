@@ -42,7 +42,9 @@ module.exports = (env, argv) => ({
 			}
 		},
 		// 将webpack运行时生成代码打包到runtime.js
-		runtimeChunk: true
+		runtimeChunk:  {
+			"name": "manifest"
+	},
 	},
 	resolve: {
 		modules: [path.resolve('src'),
