@@ -1,13 +1,15 @@
 {
   "plugins": [
-    "@babel/plugin-syntax-dynamic-import"
-  ],
+		"@babel/plugin-syntax-dynamic-import"//编译import语法,还可以用来动态导入组件
+	],
   "presets": [
     [
       "@babel/preset-env",
       {
-        "modules": false
-      }
+        "modules": false, //把 import/export 的这一部分模块语法交由 webpack 处理,就可以使用 Tree shaking 的优化。
+				"loose":true//宽松模式，它会不严格遵循ES6的语义，而采取更符合我们平常编写代码时的习惯去编译代码，这样能让tree shaking更加放心大胆的优化
+			},
+			
     ]
   ]
 }

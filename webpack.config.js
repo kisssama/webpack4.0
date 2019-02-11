@@ -5,6 +5,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const optimizeCss = require('optimize-css-assets-webpack-plugin');
 const HappyPack = require('happypack')
+const CompressionPlugin = require('compression-webpack-plugin');
+// 手动创建进程池
+// const happyThreadPool =  HappyPack.ThreadPool({ size: os.cpus().length })报错os is not defined
 const test  = require ('./api/test')
 const resolve = dir => path.join(__dirname, '..', dir)
 //const {join:pathJoin}  = {join:fun} 所以pathJoin就是哪个方法了 ；
@@ -134,11 +137,19 @@ module.exports = (env, argv) => ({
 				removeAttributeQuotes: true, //去除属性引用
 			}
 		}),
+		new CompressionPlugin({
+			// asset: "[path].gz[query]",
+			algorithm: "gzip",
+			test: /\.js$|\.css$|\.html$/,
+			// threshold: 10,
+			// minRatio: 0
+			}),
 		new HappyPack({
       // 用唯一的标识符id来代表当前的HappyPack 处理一类特定的文件
-      id: 'babel',
+			id: 'babel',
+			// threadPool: happyThreadPool,
       // 如何处理.js文件，用法和Loader配置是一样的
-			loaders: ['babel-loader'],
+			loaders: ['babel-loader?cacheDirectory=true'],//cacheDirectory=true开启缓存将转译结果缓存至文件系统
     }),
 		//我们可以直接使用 imagemin 来做图片压缩，编写简单的命令即可。然后使用 pre-commit 这个类库来配置对应的命令，
 		//使其在 git commit 的时候触发，并且将要提交的文件替换为压缩后的文件。

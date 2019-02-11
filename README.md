@@ -1,6 +1,7 @@
 # webpack4.0
 webpack4.0+vue的基本配置  
 未完待续 ：  
+webpack项目优化  
 webpack配置根据环境进行拆分(生产、开发)  
 多页面配置
 mock数据
