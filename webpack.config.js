@@ -33,7 +33,7 @@ module.exports = (env, argv) => ({
 					chunks: 'initial',
 					name: 'myVendor',  // 任意命名
 					minSize: 0,    // 只要超出0字节就生成一个新包
-					minChunks:1//至少被引用2次
+					minChunks:2// minChunks是指某个模块至少被2个入口文件依赖。
 				}
 			}
 		},
