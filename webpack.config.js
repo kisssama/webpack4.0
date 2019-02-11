@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const optimizeCss = require('optimize-css-assets-webpack-plugin');
 const HappyPack = require('happypack')
+const test  = require ('./api/test')
 const resolve = dir => path.join(__dirname, '..', dir)
 //const {join:pathJoin}  = {join:fun} 所以pathJoin就是哪个方法了 ；
 //path.join将该路径片段进行拼接   path.resolvee将以/开始的路径片段作为根目录，在此之前的路径将会被丢弃，就像是在terminal中使用cd命令一样。并且返回绝对路径
@@ -161,7 +162,7 @@ module.exports = (env, argv) => ({
 					app.get('/api/test.json', function (req, res) { // 当访问 /some/path 路径时，返回自定义的 json 数据
 							res.json({
 									code: 200,
-									message: 'hello world'
+									message: test.okc
 							})
 					})
 			}
